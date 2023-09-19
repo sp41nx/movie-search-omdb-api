@@ -15,15 +15,16 @@ import Modal from "./Modal";
 const Main = () => {
 
     const {moviesList, movieInfo} = useAppSelector(({data}) => data),
-        [movePerPage, setMovePerPage] = useState('5'),
+        [movePerPage, setMovePerPage] = useState('10'),
         [page, setPage] = useState(1),
-        [up, setUp] = useState(5),
+        [up, setUp] = useState(0),
         [isOpened, setIsOpened] = useState(false),
-        [pLength, setPlength] = useState(1),
-        dispatch = useAppDispatch();
+        [pLength, setPlength] = useState(1);
 
     useEffect(() => {
         moviesList.Search && setPlength(moviesList.Search.length / +movePerPage || 1);
+        setPage(1);
+        setUp((+movePerPage * page));
     }, [movePerPage]);
 
     const handleChangePerPage = (event: SelectChangeEvent) => {

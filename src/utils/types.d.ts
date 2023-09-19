@@ -1,3 +1,5 @@
+import {SetStateAction} from "react";
+
 export interface CardProps {
     Title: string;
     Year: string;
@@ -14,6 +16,20 @@ export interface searchData {
     year?: string,
     plot?: string
     type?: string
+}
+
+export interface movieSpoiler{
+    "Title": string,
+    "Year": string,
+    "imdbID": string,
+    "Type": string,
+    "Poster": string
+}
+
+export interface ResponseList{
+    Response: string,
+    Search: movieSpoiler[],
+    totalResults: string
 }
 
 type MovieInfo = {

@@ -7,8 +7,7 @@ import {Box, CircularProgress} from "@mui/material";
 
 const Modal = ({switchModal}: { switchModal: React.Dispatch<SetStateAction<boolean>> }) => {
 
-    const [movieData, setData] = useState([]),
-        [infoArr, setInfoArr] = useState([] as [string, string | Object[]][]),
+    const [infoArr, setInfoArr] = useState([] as [string, string | Object[]][]),
         {movieInfo, pending} = useAppSelector(state => state.data);
 
 
@@ -38,9 +37,10 @@ const Modal = ({switchModal}: { switchModal: React.Dispatch<SetStateAction<boole
                 alignItems: 'center',
             }}>
             {pending ?
-                <Box sx={{
-                    display: 'flex'
-                }}>
+                <Box
+                    sx={{
+                        display: 'flex'
+                    }}>
                     <CircularProgress/>
                 </Box> :
                 <div
@@ -82,8 +82,11 @@ const Modal = ({switchModal}: { switchModal: React.Dispatch<SetStateAction<boole
                             {!pending && infoArr.map((e, i) =>
                                 (i > 0 && i !== 2 && i < 13) &&
                                 <tr style={{textAlign: 'start', lineHeight: '30px'}} key={i}>
-                                    <th style={{lineHeight: '20px'}}>{`${e[0]}:`}</th>
-                                    {` ${e[1]}`}</tr>)}
+                                    <th style={{lineHeight: '20px'}}>
+                                        {`${e[0]}:`}
+                                    </th>
+                                    {` ${e[1]}`}
+                                </tr>)}
                         </table>
                     </div>
                 </div>}
